@@ -1,0 +1,26 @@
+body {
+    background-image: url('./valentine-rotate.gif');    
+    background-attachment: fixed;
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: pink;
+   
+}
+
+
+.card {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+    background-color: lightyellow;
+}
+
+.to-name {
+    font-size: 40px;
+    color: White;
+}
+
+.to-title {
+    font-size: 30px;
+}
