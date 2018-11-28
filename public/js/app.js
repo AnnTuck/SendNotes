@@ -12,6 +12,13 @@ $(function () {
             body: $('#inputMessage').val().trim()
         };
 
+
+        $('#inputFrom').val('');
+        $('#inputTo').val('');
+        $('#inputTitle').val('');
+        $('#inputMessage').val('');
+
+
         console.log("newMessage", newMessage);
 
         postNote(newMessage)
@@ -89,8 +96,8 @@ const renderMail = function () {
 
             $('#to').append(renderTitle);
             $('#to').append(renderFrom);                                  
-            $('#to').append(renderMessage);
-            $('#to').append('<br>');
+            $('#to').append(renderMessage);            
+            $('#to').append('<hr><br>');
         };
     };
 

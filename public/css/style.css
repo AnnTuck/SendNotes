@@ -5,11 +5,12 @@ body {
     background-repeat: no-repeat;
     background-size: 100%;
     background-color: pink;
+    
    
 }
 
 
-.card {
+.to {
     border-style: solid;
     border-color: black;
     border-width: 1px;
@@ -17,10 +18,17 @@ body {
 }
 
 .to-name {
-    font-size: 40px;
+    font-size: 30px;
     color: White;
 }
 
 .to-title {
-    font-size: 30px;
+    font-size: 20px;
+}
+
+.frontButton {
+    Background-color: red;
+    border-color: white;
+    
+    
 }

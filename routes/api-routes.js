@@ -40,35 +40,35 @@ module.exports = function (app) {
   app.post('/api/kudos', function (req, res) {
     const senderId = req.body.from;
     const receiverId = req.body.to;
-    
+
     const newEntry = {
       title: req.body.title,
       body: req.body.body,
       to: req.body.to,
       from: req.body.from
-      }
-     
+    }
+
+    let newKudo;
     Kudos.create(newEntry)
-      .then(function (kudosData) {   
-                
-      
-      return User.findOneAndUpdate({username: receiverId}, { $push: { receiverPosts: kudosData._id } }, { new: true });
+      .then(function (kudosData) {
+        newKudo = kudosData;
+        //kudosData is what is returned from the create function.
+        return User.findOneAndUpdate({ username: receiverId }, { $push: { receiverPosts: kudosData._id } }, { new: true });
 
-    })
-    .then(function (kudosData) {   
-        
-          
-    return User.findOneAndUpdate({username: senderId}, { $push: { senderPosts: kudosData._id } }, { new: true });
+      })
+      //receivingUser is the result of findOneAndUpdate
+      .then(function (receivingUser) {
+        return User.findOneAndUpdate({ username: senderId }, { $push: { senderPosts: newKudo._id } }, { new: true });
 
-  })
-    .then(function(userData) {      
-      res.json(userData);
-    })
-    .catch(function (err) {
-      res.json(err);
-      console.log("catch");
-    });
-    
+      })
+      .then(function (sendingUser) {
+        res.json(newKudo);
+      })
+      .catch(function (err) {
+        res.json(err);
+        console.log("catch");
+      });
+
   });
 
   // app.post('/api/kudos', function (req, res) {
